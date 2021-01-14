@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <a href="#" class="navbar-brand green pl-3">Топ футбольных <b>клубов</b></a>
+    <div class="dropdown open">
+  <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Об Авторе
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="#">Ахвердиев</a>
+    <a class="dropdown-item" href="#">ИУ5-51Б</a>
+  </div>
+</div>
+</nav>
+<body>
+{% for club in club_list %}
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ club.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ club.tagline }}</h6>
+    <p class="card-text">{{ club.description }}</p>
+      <h6> Футболисты </h6>
+      <ul>
+          {% for  name in club.name.all %}
+              <li> {{ name.name }}, {{ name.age }}, {{ name.description }}
+              </li>
+
+              {% endfor %}
+      </ul>
+  </div>
+</div>
+{% endfor %}
+{#{% for football in football_list %}#}
+{#    <ul class="list-group">#}
+{#        <li class="list-group-item"> {{ football.title }} {{ '-' }}#}
+{#            {% for  name in football.name.all %}#}
+{#                {{ name.name }}#}
+{#            {% endfor %}#}
+{#        </li>#}
+{#    </ul>#}
+{#{% endfor %}#}
+</body>
+</html>
